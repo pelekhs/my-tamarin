@@ -1,0 +1,11 @@
+flags: {}
+packages:
+- '.'
+- lib/theory/
+- lib/term/
+- lib/utils/
+- lib/sapic/
+extra-deps: [ binary-instances-1, fclabels-2.0.4 ]
+resolver: lts-16.12
+nix:
+  packages: [ zlib ]
