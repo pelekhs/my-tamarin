@@ -1,0 +1,18 @@
+version: '3.7'
+
+services:
+
+    tamarin:
+        restart: always 
+        image: infsec/tamarin-prover:latest
+        container_name: tamarin
+        ports:
+            - 3001:3001
+        expose:
+            - 3001
+        network_mode: 'host'
+        # extra_hosts:
+        #     - "host.docker.internal:host-gateway"
+        volumes:
+            - .:/tamarin-prover
+        working_dir: /tamarin-prover

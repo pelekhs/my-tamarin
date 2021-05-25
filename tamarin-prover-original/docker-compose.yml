@@ -1,0 +1,30 @@
+version: '3.7'
+
+services:
+
+    tamarin:
+        restart: always 
+        build: .
+        container_name: tamarin
+        ports:
+            - 22:22
+        expose:
+            - 22
+        user: root
+        networks:
+            - front-end
+        # network_mode: 'host'
+        # extra_hosts:
+        #     - "host.docker.internal:host-gateway"
+        privileged: true
+        volumes:
+            - .:/tamarin-prover
+        working_dir: /tamarin-prover
+        entrypoint: /bin/bash
+        command: -c "sudo service ssh start && sudo /usr/sbin/sshd -D; tamarin-prover interactive ."
+        #entrypoint: bash -c "iptables -t nat -I PREROUTING -p tcp -d any --dport 3001 -j DNAT --to-destination 127.0.0.1:2222 "
+        
+networks:
+    front-end:
+        driver: bridge
+        

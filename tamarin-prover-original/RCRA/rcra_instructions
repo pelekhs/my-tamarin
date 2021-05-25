@@ -1,0 +1,9 @@
+To run from rcra container:
+
+sudo apt install -y expect ssh
+
+move expect.sh to cwd
+
+./expect.sh tamarin-prover ssh -o "StrictHostKeyChecking no" -L localhost:3005:localhost:3001 tamarin-prover@<tamarin-container-ip>
+
+Enjoy tamarin from port 3005 !!
