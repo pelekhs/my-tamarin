@@ -1,0 +1,22 @@
+FROM archlinux:base-devel
+
+RUN pacman -Syu --noconfirm \
+    && pacman -S stack --noconfirm
+
+WORKDIR /tamarin-prover
+
+COPY tamarin-prover .
+
+RUN useradd -m tamarin \
+    && chmod 775 /tamarin-prover && chown -R tamarin:tamarin /tamarin-prover
+    
+USER tamarin
+
+RUN make default
+
+WORKDIR /home/tamarin/.local/bin
+
+EXPOSE 3001
+
+ENTRYPOINT ["./tamarin-prover"]
+CMD ["--help"]

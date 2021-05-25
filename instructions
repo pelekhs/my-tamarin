@@ -1,0 +1,5 @@
+docker build -t tamarin-prover .
+
+docker run tamarin-prover interactive /tamarin-prover/examples
+
+interactive run: docker run --entrypoint=/bin/sh -it tamarin-prover
