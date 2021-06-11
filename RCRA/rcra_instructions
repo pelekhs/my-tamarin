@@ -4,6 +4,6 @@ sudo apt install -y expect ssh
 
 move expect.sh to cwd
 
-./expect.sh tamarin-prover ssh -o "StrictHostKeyChecking no" -L localhost:3005:localhost:3001 tamarin-prover@<tamarin-container-ip>
+./expect.sh tamarin-prover ssh -4 -o "StrictHostKeyChecking no" -L 0.0.0.0:3005:localhost:3001 tamarin-prover@<tamarin-container-name>
 
 Enjoy tamarin from port 3005 !!
